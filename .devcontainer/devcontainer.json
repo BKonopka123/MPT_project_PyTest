@@ -1,0 +1,13 @@
+{
+	"name": "Python 3",
+	"image": "mcr.microsoft.com/devcontainers/python:1-3.11-bullseye"
+
+  "customization": {
+    "vscode" :{
+      "extensions": ["Python"]
+    }
+  }
+
+	"postCreateCommand": "pip3 install -U pytest"
+  "user": "mpt-docker""
+}
