@@ -21,5 +21,5 @@ ctrl + shift + x
 Search for docker and install the extension. Then follow the instructions to install docker. After installing docker, go to the docker icon on the left hand side of the screen and click on it. Then "New Dev Container" and select "Open current folder in container". This will open the repository in a docker container with all the necessary dependencies installed.
 
 ## Links
-Trailer : https://www.youtube.com/watch?v=-mkhSlPCocw
+Trailer : https://www.youtube.com/watch?v=-mkhSlPCocw <br />
 Main video : Stay tuned!
