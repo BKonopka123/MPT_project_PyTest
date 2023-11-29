@@ -48,7 +48,6 @@ def test_reverse():
     list1=[1,2,3]
     assert code.arr_reverse(list1) == [3,2,1]
 
-
 @pytest.mark.math
 def test_sum():
     assert code.sum(1,2) == 3

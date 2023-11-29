@@ -1,2 +1,2 @@
 import pytest
-from utils import example
+from utils import code
