@@ -29,17 +29,17 @@ def test_5():
     assert True
 
 @pytest.mark.xfail(sys.platform == "win32", reason="Do not work on windows")
-def test_function():
+def test_6():
     assert True
 
 @pytest.mark.xfail(raises=RuntimeError)
-def test_function():
+def test_7():
     assert True
 
 @pytest.mark.xfail(run=False)
-def test_function():
+def test_8():
     assert True
 
 @pytest.mark.xfail(strict=True)
-def test_function():
+def test_9():
     assert True
