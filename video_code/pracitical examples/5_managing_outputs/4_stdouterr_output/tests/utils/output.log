@@ -1,0 +1,7 @@
+{"pytest_version": "7.4.3", "$report_type": "SessionStart"}
+{"nodeid": "", "outcome": "passed", "longrepr": null, "result": null, "sections": [], "$report_type": "CollectReport"}
+{"nodeid": "test_code.py", "outcome": "passed", "longrepr": null, "result": null, "sections": [], "$report_type": "CollectReport"}
+{"nodeid": "test_code.py::test_myoutput", "location": ["test_code.py", 4, "test_myoutput"], "keywords": {"test_myoutput": 1, "test_code.py": 1, "__init__.py": 1, "utils": 1}, "outcome": "passed", "longrepr": null, "when": "setup", "user_properties": [], "sections": [], "duration": 0.0007681999995838851, "start": 1701810365.0804384, "stop": 1701810365.081208, "$report_type": "TestReport"}
+{"nodeid": "test_code.py::test_myoutput", "location": ["test_code.py", 4, "test_myoutput"], "keywords": {"test_myoutput": 1, "test_code.py": 1, "__init__.py": 1, "utils": 1}, "outcome": "passed", "longrepr": null, "when": "call", "user_properties": [], "sections": [], "duration": 0.00027520000003278255, "start": 1701810365.0814826, "stop": 1701810365.081759, "$report_type": "TestReport"}
+{"nodeid": "test_code.py::test_myoutput", "location": ["test_code.py", 4, "test_myoutput"], "keywords": {"test_myoutput": 1, "test_code.py": 1, "__init__.py": 1, "utils": 1}, "outcome": "passed", "longrepr": null, "when": "teardown", "user_properties": [], "sections": [], "duration": 0.00020820000099774916, "start": 1701810365.0819821, "stop": 1701810365.082191, "$report_type": "TestReport"}
+{"exitstatus": 0, "$report_type": "SessionFinish"}
