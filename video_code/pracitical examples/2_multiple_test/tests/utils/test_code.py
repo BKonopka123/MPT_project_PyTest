@@ -8,7 +8,7 @@ class Test_fun_1:
     
     def test_find(self):
         list1 = [8,9,15]
-        assert code.arr_find(list1, 9) == 1
+        assert code.arr_find(list1, 9) == 2
     
     def test_min(self):
         list1 = [19,-5,16]
@@ -62,4 +62,4 @@ def test_multi():
 
 @pytest.mark.math
 def test_div():
-    assert code.div(1,2) == 0.5
+    assert code.div(1,2) == 0.3
