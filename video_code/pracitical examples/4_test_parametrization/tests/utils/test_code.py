@@ -1,2 +1,35 @@
 import pytest
-from utils import code
+
+#simple class parametrization - all tests in class will be parametrized with the same values
+
+@pytest.mark.skip()
+@pytest.mark.parametrize("n,expected", [(1, 2), (3, 4)])
+class TestClass:
+    def test_simple_case(self, n, expected):
+        assert n + 1 == expected
+
+    def test_weird_simple_case(self, n, expected):
+        assert (n * 1) + 1 == expected
+
+#global parametrization - all tests in module will be parametrized with the same values
+
+#pytestmark = pytest.mark.parametrize("n,expected", [(1, 2), (3, 4)])
+
+#marking certain parameters within the parametrization with mark.xfail
+
+@pytest.mark.skip()
+@pytest.mark.parametrize(
+    "test_input,expected",
+    [("3+5", 8), ("2+4", 6), pytest.param("6*9", 42, marks=pytest.mark.xfail)],
+)
+def test_eval(test_input, expected):
+    assert eval(test_input) == expected
+
+#adding your own options to parametrization
+
+def test_valid_string(stringinput):
+    assert stringinput.isalpha()
+
+#@pytest.mark.skip()
+def test_compute(param1):
+    assert param1 < 4
