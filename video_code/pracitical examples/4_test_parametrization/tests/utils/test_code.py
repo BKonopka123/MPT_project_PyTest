@@ -27,9 +27,12 @@ def test_eval(test_input, expected):
 
 #adding your own options to parametrization
 
+#@pytest.mark.skip()
 def test_valid_string(stringinput):
     assert stringinput.isalpha()
 
 #@pytest.mark.skip()
 def test_compute(param1):
     assert param1 < 4
+
+#example of running it int he terminal pytest -q --till=4 --stringinput="hello" --stringinput="world" test_code.py
