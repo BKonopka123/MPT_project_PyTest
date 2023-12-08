@@ -15,3 +15,4 @@ def pytest_generate_tests(metafunc):
         till = metafunc.config.getoption("till")
         if till is not None:
             metafunc.parametrize("param1", range(till))
+
