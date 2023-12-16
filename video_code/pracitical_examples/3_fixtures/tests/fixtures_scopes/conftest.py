@@ -15,7 +15,7 @@ def setup_password():
 
 @pytest.fixture(scope="session")
 def setup_email():
-    return "admin@webadmin.com"
+    return "admin@webmail.com"
 
 
 # Function scope is the default scope for fixtures. 
@@ -48,13 +48,13 @@ def pytest_addoption(parser):
 
 def set_scope(fixture_name, config):
     if config.getoption("--keep-data-between-tests", None):
+        print("Scope of fixture {} is session".format(fixture_name))
         return "session"
+    print("Scope of fixture {} is function".format(fixture_name))
     return "function"
 
 
 @pytest.fixture(scope=set_scope)
 def setup_db_of_users(setup_username):
-    list_of_users = []
-    for i in range(10000):
-        list_of_users.append(setup_username + str(i))
+    list_of_users = [setup_username + str(i) for i in range(30000)]
     return list_of_users

@@ -50,10 +50,10 @@ class TestFixturesScopes:
 class TestDynamicScopeFixture:
     def test_register_all_users(self, setup_db_of_users):
         for user in setup_db_of_users:
-            register = Register(user, "admin", user + "@webadmin.com")
+            register = Register(user, "admin", user + "@webmail.com")
             assert register.register() == True
-        # Why 10001 ? Check the scopes of fixtures. :)
-        assert registers.count == 10001
+        # Why 30001 ? Becouse object registers is created once for all tests
+        assert registers.count == 30001
 
     
     def test_login_all_users(self, setup_db_of_users):

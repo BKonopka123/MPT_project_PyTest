@@ -15,6 +15,10 @@ class Logins:
 
     def get_count(self):
         return self.count
+    
+    def logout(self):
+        self.count -= 1
+        return True
 
 
 
@@ -45,6 +49,10 @@ class Registers:
 
     def get_emails(self):
         return self.emails
+    
+
+    def remove_email(self, email):
+        self.emails.remove(email)
 
 
 registers = Registers()
@@ -63,4 +71,19 @@ class Register:
         if '@' not in self.email:
             return False
         registers.registered(self)
+        return True
+    
+    
+    def unregister(self):
+        registers.remove_email(self.email)
+        return True
+
+
+class User:
+    def __init__(self, account):
+        self.username = account.username
+        self.password = account.password
+
+
+    def do_something(self):
         return True
