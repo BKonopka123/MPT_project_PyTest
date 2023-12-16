@@ -1,0 +1,7 @@
+# Ignore project presentation parts like images etc.
+Trailer_videos/*
+*.jpg
+*.png
+*.webp
+# Ignore everything from Pytest caching mechanism
+*/**/__pycache/*
