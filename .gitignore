@@ -4,4 +4,4 @@ Trailer_videos/*
 *.png
 *.webp
 # Ignore everything from Pytest caching mechanism
-*/**/__pycache/*
+__pycache__/
