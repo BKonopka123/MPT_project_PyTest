@@ -2,25 +2,28 @@ import pytest
 from utils.code import *
 
 
-# Unsafe and very unreadable fixture with teardown of all objects
+# Unsafe and very unreadable fixture with teardown,
+# hard to maintain, debug or extend
 @pytest.fixture()
-def setup_user_action():
-    register = Register("admin", "admin", "admin@gmail.com")
-    register.register()
-    account = Account("admin", "admin")
-    login = Login(account)
-    login.login()
+def setup_user_unsafe():
+    username = "admin"
+    password = "admin"
+    email = "admin@gmail.com"
+    account = Account(username, password, email)
+    register = Register(username, password, email)
     user = User(account)
+    register.register()
+    user.login()
     yield user
-    user = None
-    login.logins.logout()
-    login = None
+    user.logout()
     register.unregister()
-    register = None
-    account = None
+    del user
+    del register
+    del account
 
 
 # Safe and readable fixtures but more code
+# Any acctions are reduced to atomic or close to atomic operations
 @pytest.fixture(scope="class")
 def setup_username():
     return "admin"
@@ -37,10 +40,10 @@ def setup_email():
 
 
 @pytest.fixture(scope="class")
-def setup_account(setup_username, setup_password):
-    account = Account(setup_username, setup_password)
+def setup_account(setup_username, setup_password, setup_email):
+    account = Account(setup_username, setup_password, setup_email)
     yield account
-    account = None
+    del account
 
 
 @pytest.fixture(scope="class")
@@ -48,24 +51,17 @@ def setup_register(setup_username, setup_password, setup_email):
     register = Register(setup_username, setup_password, setup_email)
     yield register
     register.unregister()
-    register = None
+    del register
 
 
 @pytest.fixture(scope="class")
 def setup_login(setup_account, setup_register):
-    login = Login(setup_account)
-    yield login
-    login.logins.logout()
-    login = None
+    user = User(setup_account)
+    yield user
+    user.logout()
+    del user
 
 
 @pytest.fixture(scope="class")
 def setup_user(setup_login):
-    user = User(setup_login.account)
-    yield user
-    user = None
-
-
-@pytest.fixture(scope="class")
-def setup_user_action_safe(setup_user):
-    return setup_user
+    return setup_login

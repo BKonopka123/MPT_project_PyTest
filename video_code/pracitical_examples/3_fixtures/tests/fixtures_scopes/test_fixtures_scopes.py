@@ -5,59 +5,36 @@ import pytest
 class TestFixturesScopes:
     def test_register(self, setup_register):
         assert setup_register.register() == True
-        assert len(registers.get_emails()) == 1
-
-    
-    def test_login(self, setup_username, setup_password):
-        account = Account(setup_username, setup_password)
-        login = Login(account)
-        assert login.login() == True
+        assert registered_users.get_count() == 1
 
 
-    def test_login_with_email(self, setup_email, setup_password):
-        account = Account(setup_email, setup_password)
-        login = Login(account)
-        assert login.login() == True
-
-
-    def test_login_count(self, setup_login):
+    def test_login(self, setup_login):
         assert setup_login.login() == True
+        assert setup_login.is_logged() == True
+
+
+    def test_login_another_time(self, setup_login):
+        # Because we are working on same object thanks
+        # to scope class, the user is already logged in
+        # after the previous test so this test will fail
+        # trying to login again.
         assert setup_login.login() == True
-        assert setup_login.login() == True
-        assert setup_login.logins.get_count() == 4
-
-    # This test will fail because setup_login is executed
-    # once for module so it was called in the previous test
-    # and the count of logins is 4.
-    def test_login_count_2(self, setup_login):
-        assert setup_login.logins.get_count() == 5
+        assert setup_login.is_logged() == True
 
 
-    # setup_login_2 is executed once for each function
-    # because of function scope.
-    def test_login_count_3(self, setup_login_2):
-        assert setup_login_2.logins.get_count() == 1
+    def test_logout(self, setup_login):
+        assert setup_login.logout() == True
+        assert setup_login.is_logged() == False
 
 
-    def test_login_count_4(self, setup_login_2):
-        assert setup_login_2.logins.get_count() == 1
+    def test_login_2(self, setup_login_2):
+        assert setup_login_2.login() == True
+        assert setup_login_2.is_logged() == True
 
 
-    def test_login_count_5(self, setup_login_2):
-        assert setup_login_2.logins.get_count() == 1
-
-
-class TestDynamicScopeFixture:
-    def test_register_all_users(self, setup_db_of_users):
-        for user in setup_db_of_users:
-            register = Register(user, "admin", user + "@webmail.com")
-            assert register.register() == True
-        # Why 30001 ? Becouse object registers is created once for all tests
-        assert registers.count == 30001
-
-    
-    def test_login_all_users(self, setup_db_of_users):
-        for user in setup_db_of_users:
-            account = Account(user, "admin")
-            login = Login(account)
-            assert login.login() == True
+    def test_logout_2(self, setup_login_2):
+        # Because we are working on different objects thanks
+        # to scope function, the user is not logged in
+        # because new object is created for each test.
+        assert setup_login_2.logout() == True
+        assert setup_login_2.is_logged() == False
