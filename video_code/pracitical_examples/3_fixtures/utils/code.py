@@ -65,6 +65,10 @@ class Account:
                self.password == other.password and \
                self.email == other.email
 
+
+    def __repr__(self):
+        return f"Account({self.username}, {self.password}, {self.email})"
+
     
     def get_username(self):
         return self.username

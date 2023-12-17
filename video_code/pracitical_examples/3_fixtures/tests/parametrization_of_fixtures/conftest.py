@@ -22,7 +22,8 @@ def setup_register_2(request):
     del register
 
 
-@pytest.fixture(params=["admin1", pytest.param("admin2", marks=pytest.mark.skip), pytest.param("admin3", marks=pytest.mark.admin3)])
+@pytest.fixture(params=["admin1", pytest.param("admin2", marks=pytest.mark.skip),
+                        pytest.param("admin3", marks=pytest.mark.admin3)])
 def setup_register_3(request):
     register = Register(request.param, "admin", request.param + "@gmail.com")
     yield register
