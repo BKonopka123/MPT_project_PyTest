@@ -28,7 +28,7 @@ def test_5():
         pytest.xfail("failing configuration")
     assert True
 
-@pytest.mark.xfail(sys.platform == "win32", reason="Do not work on windows")
+@pytest.mark.xfail(sys.platform == "win32", reason="Does not work on windows")
 def test_6():
     assert True
 
