@@ -22,4 +22,4 @@ Search for docker and install the extension. Then follow the instructions to ins
 
 ## Links
 Trailer : https://www.youtube.com/watch?v=-mkhSlPCocw <br />
-Main video : Stay tuned!
+Main video : https://youtu.be/UZUNlmzKlPc
